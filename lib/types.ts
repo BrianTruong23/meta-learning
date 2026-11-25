@@ -377,7 +377,7 @@ export interface Quest {
   target: number;
   progress: number;
   xp: number;
-  metric: "lessons" | "reviews" | "practice" | "minutes" | "xp";
+  metric: "lessons" | "reviews" | "practice" | "minutes" | "xp" | "challenges";
   issuedDay: string; // yyyy-mm-dd (daily) or iso-week (weekly)
   claimed: boolean;
 }
@@ -487,6 +487,45 @@ export interface ProblemAttempt {
   testing: string;
   conclusion: string;
   lessonsLearned: string;
+  at: number;
+}
+
+// ---------------------------------------------------------------------------
+// External challenges — intellectual activities done ANYWHERE (Wordle, chess
+// puzzles, a read paper, a LeetCode daily…) that earn XP. Self-reported on the
+// honor system. Earns game XP only — NOT mastery, since it isn't an assessment
+// of a specific tracked concept.
+// ---------------------------------------------------------------------------
+export type ExternalCategory =
+  | "word"
+  | "logic"
+  | "math"
+  | "coding"
+  | "knowledge"
+  | "memory"
+  | "creative";
+
+export interface ExternalActivity {
+  id: string;
+  title: string;
+  provider: string;
+  description: string;
+  category: ExternalCategory;
+  url?: string;
+  points: number;
+  cadence: "daily" | "repeatable" | "once";
+  /** Optional structured detail to capture, e.g. "Guesses (1–6)". */
+  detailLabel?: string;
+  custom?: boolean;
+}
+
+export interface ExternalLog {
+  id: string;
+  activityId: string;
+  title: string;
+  category: ExternalCategory;
+  points: number;
+  detail?: string;
   at: number;
 }
 

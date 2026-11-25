@@ -137,6 +137,7 @@ const DAILY_TEMPLATES: Omit<Quest, "issuedDay" | "progress" | "claimed">[] = [
   { id: "d-lessons", kind: "daily", label: "Complete 2 lessons", target: 2, xp: 30, metric: "lessons" },
   { id: "d-reviews", kind: "daily", label: "Clear 10 reviews", target: 10, xp: 20, metric: "reviews" },
   { id: "d-practice", kind: "daily", label: "Solve 3 practice problems", target: 3, xp: 25, metric: "practice" },
+  { id: "d-challenge", kind: "daily", label: "Log 1 activity from the wild", target: 1, xp: 20, metric: "challenges" },
 ];
 const WEEKLY_TEMPLATES: Omit<Quest, "issuedDay" | "progress" | "claimed">[] = [
   { id: "w-xp", kind: "weekly", label: "Earn 300 XP this week", target: 300, xp: 100, metric: "xp" },
@@ -196,4 +197,6 @@ export const ALL_BADGES: Badge[] = [
   { id: "calibrated", title: "Know Thyself", description: "Achieve well-calibrated confidence", icon: "target" },
   { id: "researcher", title: "Investigator", description: "Complete a research project", icon: "microscope" },
   { id: "writer", title: "Wordsmith", description: "Revise a piece to a stronger draft", icon: "pen-line" },
+  { id: "wild-learner", title: "Scholar at Large", description: "Log your first activity from the wild", icon: "puzzle" },
+  { id: "polymath", title: "Polymath", description: "Log external activities in 4+ categories", icon: "puzzle" },
 ];

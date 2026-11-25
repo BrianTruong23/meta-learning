@@ -5,18 +5,18 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-sm font-semibold transition-all focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98]",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-sm font-semibold transition-all focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 active:translate-y-px",
   {
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground shadow-card hover:brightness-110",
+          "bg-primary text-primary-foreground shadow-[0_1px_0_hsl(var(--primary)/0.6),0_8px_20px_hsl(var(--primary)/0.28)] hover:brightness-[1.08] hover:-translate-y-0.5",
         secondary:
-          "bg-surface-2 text-foreground border border-border hover:bg-muted",
+          "bg-surface text-foreground border border-border shadow-card hover:bg-surface-2 hover:-translate-y-0.5",
         outline: "border border-border bg-transparent hover:bg-surface-2",
         ghost: "hover:bg-surface-2",
-        success: "bg-success text-white hover:brightness-110",
-        danger: "bg-danger text-white hover:brightness-110",
+        success: "bg-success text-white hover:brightness-[1.08]",
+        danger: "bg-danger text-white hover:brightness-[1.08]",
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {

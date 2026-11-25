@@ -13,6 +13,7 @@ import {
   Trophy,
   Brain,
   CheckCircle2,
+  Puzzle,
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -62,19 +63,21 @@ export default function Dashboard() {
       />
 
       {/* Hero: next action */}
-      <Card className="mb-6 overflow-hidden border-primary/30 bg-gradient-to-br from-primary/10 to-accent/5">
+      <Card className="mb-6 overflow-hidden border-0 bg-foreground text-background shadow-card-hover">
         <CardContent className="flex flex-col items-start gap-4 p-6 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <p className="text-sm font-semibold text-primary">Your next best step</p>
-            <h2 className="mt-1 text-xl font-bold md:text-2xl">{primary.label}</h2>
-            <p className="mt-1 text-sm text-muted-foreground">
+          <div className="min-w-0">
+            <p className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.14em] text-accent">
+              <span className="h-1.5 w-1.5 rounded-full bg-accent" /> Your next best step
+            </p>
+            <h2 className="font-display mt-2 text-2xl md:text-3xl">{primary.label}</h2>
+            <p className="mt-1.5 text-sm text-background/70">
               {due.length > 0
                 ? "Spaced review first — it's the highest-leverage thing you can do right now."
                 : "Keep your momentum going."}
             </p>
           </div>
           <Link href={primary.href}>
-            <Button size="lg" className="gap-2">
+            <Button size="lg" variant="secondary" className="gap-2 text-foreground">
               <PrimaryIcon className="h-5 w-5" /> Start
             </Button>
           </Link>
@@ -292,6 +295,21 @@ export default function Dashboard() {
               )}
             </CardContent>
           </Card>
+
+          <Link href="/challenges">
+            <Card className="overflow-hidden border-0 bg-accent/12 transition-shadow hover:shadow-card-hover">
+              <CardContent className="flex items-center gap-3 p-5">
+                <Puzzle className="h-6 w-6 text-accent" />
+                <div>
+                  <p className="font-semibold">Earn XP in the wild</p>
+                  <p className="text-sm text-muted-foreground">
+                    Log Wordle, chess, papers &amp; more
+                  </p>
+                </div>
+                <ArrowRight className="ml-auto h-4 w-4 text-muted-foreground" />
+              </CardContent>
+            </Card>
+          </Link>
 
           <Link href="/achievements">
             <Card className="transition-shadow hover:shadow-card-hover">

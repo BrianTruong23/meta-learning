@@ -10,6 +10,7 @@ import {
   Target,
   Microscope,
   PenLine,
+  Puzzle,
   type LucideIcon,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -32,6 +33,7 @@ const BADGE_ICONS: Record<string, LucideIcon> = {
   target: Target,
   microscope: Microscope,
   "pen-line": PenLine,
+  puzzle: Puzzle,
 };
 
 export default function AchievementsPage() {

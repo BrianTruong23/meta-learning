@@ -11,6 +11,8 @@ import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 import {
   type AssessmentEvent,
+  type ExternalActivity,
+  type ExternalLog,
   type GameState,
   type KnowledgeNote,
   type NodeKnowledge,
@@ -54,6 +56,7 @@ interface StoreState {
   writing: WritingPiece[];
   portfolio: PortfolioProject[];
   problems: ProblemAttempt[];
+  externalLogs: ExternalLog[];
   completedLessons: string[];
   defeatedBosses: string[];
   settings: Settings;
@@ -93,6 +96,10 @@ interface StoreState {
   upsertWriting: (w: Partial<WritingPiece> & { id?: string }) => WritingPiece;
   addProblemAttempt: (p: Omit<ProblemAttempt, "id" | "at">) => void;
   upsertPortfolio: (p: Partial<PortfolioProject> & { id?: string }) => PortfolioProject;
+  logExternalActivity: (
+    activity: ExternalActivity,
+    detail?: string,
+  ) => { leveledUp: boolean; points: number };
 
   // game
   defeatBoss: (bossId: string) => void;
@@ -120,6 +127,7 @@ export const useStore = create<StoreState>()(
       writing: [],
       portfolio: [],
       problems: [],
+      externalLogs: [],
       completedLessons: [],
       defeatedBosses: [],
       settings: { theme: "system", reducedMotion: false, sound: true },
@@ -154,6 +162,7 @@ export const useStore = create<StoreState>()(
           writing: [],
           portfolio: [],
           problems: [],
+          externalLogs: [],
           completedLessons: [],
           defeatedBosses: [],
         }),
@@ -396,6 +405,36 @@ export const useStore = create<StoreState>()(
             : [...s.portfolio, full],
         }));
         return full;
+      },
+
+      logExternalActivity: (activity, detail) => {
+        const s = get();
+        const now = Date.now();
+        const log: ExternalLog = {
+          id: uid("xl_"),
+          activityId: activity.id,
+          title: activity.title,
+          category: activity.category,
+          points: activity.points,
+          detail,
+          at: now,
+        };
+        let game = registerActivity(s.game, now);
+        const res = awardXp(game, activity.points);
+        game = res.state;
+        game = advanceQuests(game, "xp", activity.points);
+        game = advanceQuests(game, "challenges", 1);
+        game = refreshQuests(game, now);
+
+        const logs = [...s.externalLogs, log];
+        if (!game.badges.includes("wild-learner"))
+          game = { ...game, badges: [...game.badges, "wild-learner"] };
+        const cats = new Set(logs.map((l) => l.category));
+        if (cats.size >= 4 && !game.badges.includes("polymath"))
+          game = { ...game, badges: [...game.badges, "polymath"] };
+
+        set({ externalLogs: logs, game });
+        return { leveledUp: res.leveledUp, points: activity.points };
       },
 
       defeatBoss: (bossId) =>

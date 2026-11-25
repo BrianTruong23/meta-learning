@@ -46,10 +46,11 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "ui-serif", "Georgia", "serif"],
       },
       boxShadow: {
-        card: "0 1px 2px rgba(16,24,40,0.04), 0 4px 16px rgba(16,24,40,0.06)",
-        "card-hover": "0 2px 4px rgba(16,24,40,0.06), 0 12px 32px rgba(16,24,40,0.10)",
+        card: "0 1px 2px hsl(var(--shadow-color) / 0.06), 0 6px 20px hsl(var(--shadow-color) / 0.07)",
+        "card-hover": "0 2px 4px hsl(var(--shadow-color) / 0.08), 0 16px 40px hsl(var(--shadow-color) / 0.12)",
       },
       keyframes: {
         "fade-in": {

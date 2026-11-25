@@ -3,89 +3,98 @@
 @tailwind utilities;
 
 /* ===========================================================================
-   Design tokens. Light is the default; dark applies via prefers-color-scheme
-   (guarded so a manual [data-theme] override wins) and via [data-theme="dark"].
+   Design language: "scholarly arcade" — warm paper, ink type, a confident
+   indigo primary and a gold accent. Editorial serif (Fraunces) for display
+   headings; Inter for UI/body. Gradients are used sparingly, never as the
+   default surface.
    =========================================================================== */
 :root {
-  --background: 240 20% 99%;
-  --foreground: 230 25% 15%;
-  --surface: 0 0% 100%;
-  --surface-2: 240 25% 97%;
-  --muted: 240 20% 94%;
-  --muted-foreground: 232 12% 45%;
-  --border: 240 18% 90%;
-  --input: 240 18% 88%;
-  --ring: 255 85% 66%;
+  --background: 40 36% 97%;
+  --foreground: 234 28% 14%;
+  --surface: 42 50% 99%;
+  --surface-2: 40 28% 94.5%;
+  --muted: 40 22% 91%;
+  --muted-foreground: 234 10% 42%;
+  --border: 38 20% 87%;
+  --input: 38 20% 84%;
+  --ring: 248 70% 60%;
 
-  --primary: 255 85% 62%;
+  --primary: 248 64% 58%;
   --primary-foreground: 0 0% 100%;
-  --accent: 190 90% 45%;
-  --accent-foreground: 200 100% 12%;
+  --accent: 35 92% 50%;
+  --accent-foreground: 30 60% 12%;
 
-  --success: 150 65% 42%;
-  --warning: 38 92% 50%;
-  --danger: 352 78% 56%;
+  --success: 158 58% 38%;
+  --warning: 32 92% 48%;
+  --danger: 352 70% 52%;
 
-  --world-learn: 255 85% 62%;
-  --world-research: 190 90% 42%;
-  --world-write: 28 92% 55%;
-  --world-read: 150 60% 42%;
-  --world-think: 330 75% 58%;
+  /* Jewel-toned worlds, each visually distinct from the primary. */
+  --world-learn: 248 64% 58%;
+  --world-research: 190 72% 40%;
+  --world-write: 28 88% 52%;
+  --world-read: 158 55% 40%;
+  --world-think: 338 66% 56%;
 
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
+
+  --shadow-color: 234 30% 30%;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --background: 232 28% 9%;
-    --foreground: 230 30% 94%;
-    --surface: 232 24% 13%;
-    --surface-2: 232 22% 16%;
-    --muted: 232 18% 20%;
-    --muted-foreground: 230 14% 65%;
-    --border: 232 16% 24%;
-    --input: 232 16% 26%;
-    --ring: 255 85% 70%;
+    --background: 250 24% 8%;
+    --foreground: 40 30% 92%;
+    --surface: 250 20% 11.5%;
+    --surface-2: 250 16% 15%;
+    --muted: 250 14% 19%;
+    --muted-foreground: 245 12% 64%;
+    --border: 250 14% 22%;
+    --input: 250 14% 25%;
+    --ring: 250 85% 74%;
 
-    --primary: 256 90% 72%;
-    --primary-foreground: 256 40% 10%;
-    --accent: 190 85% 55%;
-    --accent-foreground: 200 100% 10%;
+    --primary: 250 88% 74%;
+    --primary-foreground: 250 40% 10%;
+    --accent: 36 94% 60%;
+    --accent-foreground: 30 60% 10%;
 
-    --success: 150 55% 52%;
-    --warning: 38 90% 60%;
-    --danger: 352 80% 66%;
+    --success: 158 52% 52%;
+    --warning: 36 92% 60%;
+    --danger: 352 78% 68%;
 
-    --world-learn: 256 90% 72%;
-    --world-research: 190 85% 55%;
+    --world-learn: 250 88% 74%;
+    --world-research: 190 78% 55%;
     --world-write: 30 92% 62%;
-    --world-read: 150 55% 52%;
-    --world-think: 330 80% 68%;
+    --world-read: 158 52% 52%;
+    --world-think: 338 76% 70%;
+
+    --shadow-color: 250 50% 2%;
   }
 }
 
 :root[data-theme="dark"] {
-  --background: 232 28% 9%;
-  --foreground: 230 30% 94%;
-  --surface: 232 24% 13%;
-  --surface-2: 232 22% 16%;
-  --muted: 232 18% 20%;
-  --muted-foreground: 230 14% 65%;
-  --border: 232 16% 24%;
-  --input: 232 16% 26%;
-  --ring: 255 85% 70%;
-  --primary: 256 90% 72%;
-  --primary-foreground: 256 40% 10%;
-  --accent: 190 85% 55%;
-  --accent-foreground: 200 100% 10%;
-  --success: 150 55% 52%;
-  --warning: 38 90% 60%;
-  --danger: 352 80% 66%;
-  --world-learn: 256 90% 72%;
-  --world-research: 190 85% 55%;
+  --background: 250 24% 8%;
+  --foreground: 40 30% 92%;
+  --surface: 250 20% 11.5%;
+  --surface-2: 250 16% 15%;
+  --muted: 250 14% 19%;
+  --muted-foreground: 245 12% 64%;
+  --border: 250 14% 22%;
+  --input: 250 14% 25%;
+  --ring: 250 85% 74%;
+  --primary: 250 88% 74%;
+  --primary-foreground: 250 40% 10%;
+  --accent: 36 94% 60%;
+  --accent-foreground: 30 60% 10%;
+  --success: 158 52% 52%;
+  --warning: 36 92% 60%;
+  --danger: 352 78% 68%;
+  --world-learn: 250 88% 74%;
+  --world-research: 190 78% 55%;
   --world-write: 30 92% 62%;
-  --world-read: 150 55% 52%;
-  --world-think: 330 80% 68%;
+  --world-read: 158 52% 52%;
+  --world-think: 338 76% 70%;
+  --shadow-color: 250 50% 2%;
 }
 
 * {
@@ -97,16 +106,51 @@ body {
   color: hsl(var(--foreground));
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-/* Accessible focus ring everywhere. */
+/* Editorial display type for the big headings and the brand. Fraunces has
+   genuine character (soft, slightly "wonky" optical axis) — the single biggest
+   lever away from a generic UI look. */
+.font-display {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  letter-spacing: -0.018em;
+  font-weight: 560;
+}
+h1.font-display,
+.display-xl {
+  font-family: var(--font-display);
+  letter-spacing: -0.025em;
+  font-weight: 600;
+}
+
+/* A subtle paper grain in light mode gives the background texture instead of a
+   flat fill (removed under reduced-data / kept cheap as an inline gradient). */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: radial-gradient(
+    hsl(var(--foreground) / 0.025) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+  opacity: 0.6;
+}
+:root[data-theme="dark"] body::before,
+:root:not([data-theme="light"]) body::before {
+  opacity: 0;
+}
+
 :focus-visible {
   outline: 2px solid hsl(var(--ring));
   outline-offset: 2px;
   border-radius: 6px;
 }
 
-/* Respect reduced motion both via OS and the app toggle (.reduce-motion). */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -134,14 +178,30 @@ body {
   border-radius: 999px;
 }
 
-.katex { font-size: 1.05em; }
+.katex {
+  font-size: 1.05em;
+}
 
-/* Prose-ish helper for lesson explanations (lightweight, no plugin). */
-.lesson-prose p { margin: 0.75rem 0; line-height: 1.7; }
-.lesson-prose strong { color: hsl(var(--foreground)); font-weight: 650; }
+.lesson-prose p {
+  margin: 0.75rem 0;
+  line-height: 1.75;
+}
+.lesson-prose strong {
+  color: hsl(var(--foreground));
+  font-weight: 650;
+}
 .lesson-prose code {
   background: hsl(var(--muted));
   padding: 0.1rem 0.35rem;
   border-radius: 6px;
   font-size: 0.9em;
+}
+
+/* A hand-drawn accent underline motif for emphasis on display headings. */
+.accent-underline {
+  background-image: linear-gradient(hsl(var(--accent) / 0.4), hsl(var(--accent) / 0.4));
+  background-position: 0 88%;
+  background-repeat: no-repeat;
+  background-size: 100% 0.32em;
+  padding: 0 0.04em;
 }

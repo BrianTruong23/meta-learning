@@ -6,6 +6,7 @@ import {
   Network,
   Dumbbell,
   Brain,
+  Puzzle,
   Microscope,
   BookOpen,
   PenLine,
@@ -48,6 +49,7 @@ export const navGroups: NavGroup[] = [
     items: [
       { href: "/practice", label: "Practice Center", icon: Dumbbell },
       { href: "/arena", label: "Problem Arena", icon: Brain },
+      { href: "/challenges", label: "Challenges", icon: Puzzle },
       { href: "/review", label: "Review", icon: Layers },
       { href: "/exams", label: "Boss Battles", icon: Swords },
     ],

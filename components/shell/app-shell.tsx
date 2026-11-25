@@ -36,11 +36,11 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       >
         <div className="flex h-full flex-col">
           <div className="flex items-center justify-between px-5 py-4">
-            <Link href="/dashboard" className="flex items-center gap-2 font-extrabold">
-              <span className="grid h-8 w-8 place-items-center rounded-xl bg-primary text-primary-foreground">
+            <Link href="/dashboard" className="flex items-center gap-2.5">
+              <span className="grid h-8 w-8 place-items-center rounded-xl bg-foreground text-background">
                 <Sparkles className="h-4 w-4" />
               </span>
-              <span className="text-lg tracking-tight">Mastery</span>
+              <span className="font-display text-lg font-semibold tracking-tight">Mastery</span>
             </Link>
             <button
               className="md:hidden"

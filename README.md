@@ -28,6 +28,20 @@ via spaced repetition → **reload the page and your progress persists** → the
 your single next best action. Boss battles, an AI tutor, research/reading/writing labs, a personal
 knowledge library + graph, analytics, and a project portfolio are all functional.
 
+**Challenges in the wild** (`/challenges`): learning happens everywhere, so you can log real external
+intellectual activities — Wordle, NYT Connections, a Lichess puzzle, a LeetCode daily, reading an
+arXiv paper, clearing Anki, teaching someone a concept, or a custom activity — and earn XP toward
+your level and streak. It's an honor-system log that grants **XP, not mastery** (external activities
+aren't assessments of a tracked concept), keeping the XP-vs-mastery separation intact.
+
+### Design language
+
+A deliberately un-generic "scholarly arcade" look: an editorial serif display face (Fraunces) over
+Inter, a warm paper / deep-charcoal palette with an amber accent (not the stock violet-to-cyan
+gradient), jewel-toned worlds, and restrained gradients. Tokens live on `:root` in `app/globals.css`
+with light/dark variants; big headings use `.font-display`. Charts follow the `dataviz` method
+(single-hue series, one axis, recessive grid, hover tooltips).
+
 ## Core principles (enforced in code, not just copy)
 
 - **Mastery is earned, not awarded.** `lib/mastery/engine.ts` estimates competence only from real
