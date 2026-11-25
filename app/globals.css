@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===========================================================================
+   Design tokens. Light is the default; dark applies via prefers-color-scheme
+   (guarded so a manual [data-theme] override wins) and via [data-theme="dark"].
+   =========================================================================== */
+:root {
+  --background: 240 20% 99%;
+  --foreground: 230 25% 15%;
+  --surface: 0 0% 100%;
+  --surface-2: 240 25% 97%;
+  --muted: 240 20% 94%;
+  --muted-foreground: 232 12% 45%;
+  --border: 240 18% 90%;
+  --input: 240 18% 88%;
+  --ring: 255 85% 66%;
+
+  --primary: 255 85% 62%;
+  --primary-foreground: 0 0% 100%;
+  --accent: 190 90% 45%;
+  --accent-foreground: 200 100% 12%;
+
+  --success: 150 65% 42%;
+  --warning: 38 92% 50%;
+  --danger: 352 78% 56%;
+
+  --world-learn: 255 85% 62%;
+  --world-research: 190 90% 42%;
+  --world-write: 28 92% 55%;
+  --world-read: 150 60% 42%;
+  --world-think: 330 75% 58%;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --background: 232 28% 9%;
+    --foreground: 230 30% 94%;
+    --surface: 232 24% 13%;
+    --surface-2: 232 22% 16%;
+    --muted: 232 18% 20%;
+    --muted-foreground: 230 14% 65%;
+    --border: 232 16% 24%;
+    --input: 232 16% 26%;
+    --ring: 255 85% 70%;
+
+    --primary: 256 90% 72%;
+    --primary-foreground: 256 40% 10%;
+    --accent: 190 85% 55%;
+    --accent-foreground: 200 100% 10%;
+
+    --success: 150 55% 52%;
+    --warning: 38 90% 60%;
+    --danger: 352 80% 66%;
+
+    --world-learn: 256 90% 72%;
+    --world-research: 190 85% 55%;
+    --world-write: 30 92% 62%;
+    --world-read: 150 55% 52%;
+    --world-think: 330 80% 68%;
+  }
+}
+
+:root[data-theme="dark"] {
+  --background: 232 28% 9%;
+  --foreground: 230 30% 94%;
+  --surface: 232 24% 13%;
+  --surface-2: 232 22% 16%;
+  --muted: 232 18% 20%;
+  --muted-foreground: 230 14% 65%;
+  --border: 232 16% 24%;
+  --input: 232 16% 26%;
+  --ring: 255 85% 70%;
+  --primary: 256 90% 72%;
+  --primary-foreground: 256 40% 10%;
+  --accent: 190 85% 55%;
+  --accent-foreground: 200 100% 10%;
+  --success: 150 55% 52%;
+  --warning: 38 90% 60%;
+  --danger: 352 80% 66%;
+  --world-learn: 256 90% 72%;
+  --world-research: 190 85% 55%;
+  --world-write: 30 92% 62%;
+  --world-read: 150 55% 52%;
+  --world-think: 330 80% 68%;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Accessible focus ring everywhere. */
+:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Respect reduced motion both via OS and the app toggle (.reduce-motion). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+.reduce-motion *,
+.reduce-motion *::before,
+.reduce-motion *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 999px;
+}
+
+.katex { font-size: 1.05em; }
+
+/* Prose-ish helper for lesson explanations (lightweight, no plugin). */
+.lesson-prose p { margin: 0.75rem 0; line-height: 1.7; }
+.lesson-prose strong { color: hsl(var(--foreground)); font-weight: 650; }
+.lesson-prose code {
+  background: hsl(var(--muted));
+  padding: 0.1rem 0.35rem;
+  border-radius: 6px;
+  font-size: 0.9em;
+}

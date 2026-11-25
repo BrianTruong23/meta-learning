@@ -1,0 +1,47 @@
+{
+  "name": "mastery",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Mastery — a gamified, metacognition-first learning platform. Learn how to learn. Master anything.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "next": "14.2.33",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "zustand": "4.5.5",
+    "idb": "8.0.0",
+    "framer-motion": "11.5.4",
+    "reactflow": "11.11.4",
+    "recharts": "2.12.7",
+    "katex": "0.16.11",
+    "zod": "3.23.8",
+    "clsx": "2.1.1",
+    "tailwind-merge": "2.5.2",
+    "class-variance-authority": "0.7.0",
+    "lucide-react": "0.439.0"
+  },
+  "devDependencies": {
+    "typescript": "5.5.4",
+    "@types/node": "20.16.5",
+    "@types/react": "18.3.5",
+    "@types/react-dom": "18.3.0",
+    "@types/katex": "0.16.7",
+    "tailwindcss": "3.4.10",
+    "postcss": "8.4.45",
+    "autoprefixer": "10.4.20",
+    "eslint": "8.57.0",
+    "eslint-config-next": "14.2.33",
+    "vitest": "2.0.5",
+    "@vitejs/plugin-react": "4.3.1",
+    "jsdom": "25.0.0",
+    "@playwright/test": "1.47.0"
+  }
+}
